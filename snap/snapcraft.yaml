@@ -1,0 +1,27 @@
+name: enroot
+version: 0.0.0
+summary: "enroot"
+description: |
+  Enroot
+website: "https://github.com/nvidia/enroot"
+
+base: core22
+confinement: classic
+compression: lzo
+architectures:
+  - build-on: amd64
+
+apps:
+  enroot:
+    command: usr/bin/enroot
+
+parts:
+  enroot:
+    plugin: dump
+    source-type: deb
+    source: https://github.com/NVIDIA/enroot/releases/download/v3.5.0/enroot_3.5.0-1_amd64.deb
+    build-packages:
+      - jq
+      - parallel
+      - zstd
+      - bsdmainutils
